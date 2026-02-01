@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffebee;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        #container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #yesBtn { background-color: #ff4081; color: white; }
+        #noBtn { background-color: #bdbdbd; color: white; position: relative; }
+        img { max-width: 300px; border-radius: 15px; margin-top: 20px; }
+        h1 { color: #d81b60; }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1 id="question">Will you be my Valentine? ❤️</h1>
+        <div id="imageContainer">
+            <img id="displayImage" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNUMo/giphy.gif" alt="Cute gif">
+        </div>
+        
+        <div class="buttons">
+            <button id="yesBtn" onclick="answer('yes')">Yes!</button>
+            <button id="noBtn" onmouseover="moveNoButton()" onclick="answer('no')">No</button>
+        </div>
+    </div>
+
+    <script>
+        function answer(choice) {
+            const question = document.getElementById('question');
+            const img = document.getElementById('displayImage');
+            const buttons = document.querySelector('.buttons');
+
+            if (choice === 'yes') {
+                question.innerText = "Yay! I knew you'd say yes! 💖";
+                img.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l41lH4ADRtAYnGsLe/giphy.gif"; // Change to your "Yes" image
+                buttons.style.display = "none";
+            } else {
+                question.innerText = "Oh... are you sure? 🥺";
+                img.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/9Y5BbDSkSTiY8/giphy.gif"; // Change to your "No" image
+            }
+        }
+
+        function moveNoButton() {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            const noBtn = document.getElementById('noBtn');
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
